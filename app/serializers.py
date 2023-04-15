@@ -15,11 +15,9 @@ class LossSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class TeamSerializer(serializers.ModelSerializer):
     wins = WinSerializer()
     losses = LossSerializer()
-
 
     class Meta:
         model = Team

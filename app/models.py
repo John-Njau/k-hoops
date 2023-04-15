@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Team(models.Model):
@@ -23,10 +24,6 @@ class Team(models.Model):
     coach = models.CharField(max_length=100)
     category = models.CharField(max_length=1, choices=TEAM_CATEGORY_CHOICES)
     division = models.CharField(max_length=4, choices=TEAM_DIVISION_CHOICES)
-
-
-
-
 
     def calculate_games_played(self):
         games = Game.objects.filter(
@@ -69,9 +66,16 @@ class Game(models.Model):
     team1_score = models.IntegerField()
     team2_score = models.IntegerField()
     date = models.DateField()
+    time = models.TimeField(null=True, blank=True)
+    venue = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return f'{self.team1} vs {self.team2}'
+
+    @classmethod
+    def get_latest_game(cls):
+        now = timezone.now()
+        return cls.objects.filter(date__lte=now.date(), time__lte=now.time()).latest('date', 'time')
 
     def save(self, *args, **kwargs):
         super(Game, self).save(*args, **kwargs)

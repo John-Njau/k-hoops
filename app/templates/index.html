@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Game</title>
+</head>
+
+<body>
+
+    <div class="latest-game">
+        <h2>Latest Game</h2>
+        <p>{{ latest_game.team1 }} {{ latest_game.team1_score }} - {{ latest_game.team2_score }} {{ latest_game.team2 }}
+        </p>
+        <p>Date: {{ latest_game.date }}</p>
+        <p>Time: {{ latest_game.time }}</p>
+        <p>Venue: {{ latest_game.venue }}</p>
+    </div>
+    <div>
+<h2>Games of the Week</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Team 1 Score</th>
+                <th>Team 2 Score</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in game_data %}
+            <tr>
+                <td>{{ game.team1 }}</td>
+                <td>{{ game.team2 }}</td>
+                <td>{{ game.team1_score }}</td>
+                <td>{{ game.team2_score }}</td>
+                <td>{{ game.date }}</td>
+                <td>{{ game.time }}</td>
+                <td>{{ game.venue }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>

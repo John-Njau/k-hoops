@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First</title>
+</head>
+
+<body>
+    <h1>{{ title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th>Name</th>
+                <th>Coach</th>
+                <th>GP</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in team_data %}
+            <tr>
+                <td>{{team.index}}</td>
+                <td>{{ team.name }}</td>
+                <td>{{ team.coach }}</td>
+                <td>{{ team.category }}</td>
+                <td>{{ team.games_played }}</td>
+                
+                <td>{{ team.wins }}</td>
+                <td>{{ team.losses }}</td>
+                <td>{{ team.points }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

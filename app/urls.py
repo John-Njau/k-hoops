@@ -11,7 +11,11 @@ router.register(r'wins', views.WinViewSet)
 router.register(r'losses', views.LossViewSet)
 
 
+
+
 urlpatterns = [
     path('', include(router.urls)),
+    path("standings/kbf/", views.GamesView.as_view(), name="template"),
+    path("index/", views.LatestGame.as_view(), name="latest"),
 ]
 
