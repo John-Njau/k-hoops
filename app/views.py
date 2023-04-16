@@ -102,3 +102,4 @@ class LatestGame(View):
         }
 
         return render(request, self.template_name, context)
+    

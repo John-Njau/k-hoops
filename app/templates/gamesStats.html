@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KBF</title>
-    <style>
-		/*table {
+    <title>My First</title>
+	<style>
+		table {
 			border-collapse: collapse;
 			width: 100%;
 			margin-bottom: 20px;
@@ -40,7 +40,7 @@
 		.points {
 			width: 70px;
 			font-weight: bold;
-		}*/
+		}
 	</style>
 </head>
 
@@ -52,6 +52,7 @@
                 <th>Pos</th>
                 <th>Name</th>
                 <th>Coach</th>
+				<th>Category</th>
                 <th>GP</th>
                 <th>Wins</th>
                 <th>Losses</th>
@@ -65,11 +66,10 @@
                 <td>{{ team.name }}</td>
                 <td>{{ team.coach }}</td>
                 <td>{{ team.category }}</td>
-                <td>{{ team.calculate_games_played }}</td>
-                
-                <td>{{ team.calculate_wins }}</td>
-                <td>{{ team.calculate_losses }}</td>
-                <td>{{ team.calculate_points }}</td>
+                <td>{{ team.games_played }}</td>
+                <td>{{ team.wins }}</td>
+                <td>{{ team.losses }}</td>
+                <td>{{ team.points }}</td>
             </tr>
             {% endfor %}
         </tbody>
