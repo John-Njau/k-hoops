@@ -7,46 +7,261 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latest Game</title>
 </head>
+<style>
+    /*body{
+        background-color: black;
+    }
+    h1{
+        color: goldenrod;
+        margin: auto;
+        text-align: center;
+    }
+    p{
+        color: goldenrod;
+    }*/
+    .banner{
+        height: 50px;
+        width: 50px;
+        margin: auto;
+    
+    }
+    .gamecontainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 20px;
+	}
+	.team {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+    	font-size: 48px;
+		font-weight: bold;
+		text-align: center;
+		width: 150px;
+	}
+	.score {
+		
+		flex-direction: column;
+		align-items: center;
+		font-size: 48px;
+		font-weight: bold;
+    	text-align: center;
+		width: 100px;
+        display: block;
+	}
+	.gallery {
+        width: 100%;
+      }
 
+      
+      .gallery img {
+        width: 100%;
+        height: auto;
+      }
+
+      
+      .gallery-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -5px; 
+      }
+
+      .gallery-col {
+        flex: 33.33%;
+        max-width: 33.33%;
+        padding: 5px; 
+      }
+
+      
+      .gallery img:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+      .navbar {
+        background-color: black;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 50px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      
+      .navbar-logo {
+        font-size: 30px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      
+      .navbar-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 400px;
+        font-size: 20px;
+        
+      }
+
+      .navbar-links a {
+        color: gold;
+        text-decoration: none;
+        margin: 0 40px;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-links a:before {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 5px;
+        bottom: -5px;
+        left: 0;
+        background-color:white;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .navbar-links a:hover {
+        color: #fff;
+      }
+
+      .navbar-links a:hover:before {
+        width: 100%;
+        visibility: visible;
+      }
+
+      
+      /*.navbar-button {
+        background-color: #fff;
+        color: #333;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .navbar-button:hover {
+        background-color: #ddd;
+      }*/
+      
+</style>
+..
 <body>
-
-    <div class="latest-game">
-        <h2>Latest Game</h2>
-        <p>{{ latest_game.team1 }} {{ latest_game.team1_score }} - {{ latest_game.team2_score }} {{ latest_game.team2 }}
-        </p>
-        <p>Date: {{ latest_game.date }}</p>
-        <p>Time: {{ latest_game.time }}</p>
-        <p>Venue: {{ latest_game.venue }}</p>
+    <div class="container" style="border: 2pc;border-radius: 1cm;border-color: goldenrod;">
+        <!--nav class="navbar">
+            <a class="navbar-logo" href="#"> Logo</a>
+            <div class="navbar-links">
+              <a href="#">HOME</a>
+              <a href="#">KBF</a>
+              <a href="#">DIV 1</a>
+              <a href="#">DIV 2</a>
+            </div>
+           
+          </nav>
+       
+        <div class="top">
+            <div class="banner" style="height: 400px;width: 1400px;background-color: brown;"><h1>KHOOPS</h1></div>
+    
+        </div-->
+    
+        <div class="latest-game">
+            <h2>Latest Game</h2>
+            <p>{{ latest_game.team1 }} {{ latest_game.team1_score }} - {{ latest_game.team2_score }} {{ latest_game.team2 }}
+            </p>
+            <p>Date: {{ latest_game.date }}</p>
+            <p>Time: {{ latest_game.time }}</p>
+            <p>Venue: {{ latest_game.venue }}</p>
+        </div>
+        <!--div class="gamedisplay">
+            <h1>Latest game</h1>
+            <div class="gamecontainer" style="background-color: aqua;width: 1100px;height: 200px;">
+                <div class="team">
+                    <span>Home Team</span>
+                    <img src="/static/home_team_logo.png">
+                    
+                </div>
+                <div class="score">
+                    <span>3</span>
+                    <span>:</span>
+                    <span>2</span>
+                </div>
+                <div class="team">
+                    <span>Away Team</span>
+                    <img src="/static/away_team_logo.png">
+                  
+                </div>
+                
+            </div>
+            
+        </div-->
+        <div>
+        
+    <h2>Games of the Week</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Team 1</th>
+                    <th>Team 2</th>
+                    <th>Team 1 Score</th>
+                    <th>Team 2 Score</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Venue</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in game_data %}
+                <tr>
+                    <td>{{ game.team1 }}</td>
+                    <td>{{ game.team2 }}</td>
+                    <td>{{ game.team1_score }}</td>
+                    <td>{{ game.team2_score }}</td>
+                    <td>{{ game.date }}</td>
+                    <td>{{ game.time }}</td>
+                    <td>{{ game.venue }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!--div class="gallery">
+            <div class="gallery-row">
+              <div class="gallery-col">
+                <img src="image1.jpg">
+              </div>
+              <div class="gallery-col">
+                <img src="image2.jpg">
+              </div>
+              <div class="gallery-col">
+                <img src="image3.jpg">
+              </div>
+            </div>
+            <div class="gallery-row">
+              <div class="gallery-col">
+                <img src="image4.jpg">
+              </div>
+              <div class="gallery-col">
+                <img src="image5.jpg">
+              </div>
+              <div class="gallery-col">
+                <img src="image6.jpg">
+              </div>
+            </div>
+          </div-->
     </div>
-    <div>
-<h2>Games of the Week</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Team 1</th>
-                <th>Team 2</th>
-                <th>Team 1 Score</th>
-                <th>Team 2 Score</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Venue</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for game in game_data %}
-            <tr>
-                <td>{{ game.team1 }}</td>
-                <td>{{ game.team2 }}</td>
-                <td>{{ game.team1_score }}</td>
-                <td>{{ game.team2_score }}</td>
-                <td>{{ game.date }}</td>
-                <td>{{ game.time }}</td>
-                <td>{{ game.venue }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+
+    </div>
+ 
 
 </body>
 

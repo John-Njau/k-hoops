@@ -21,5 +21,5 @@ admin.site.site_title = "KHOOPS"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', include('app.urls'))
+    path("",include("app.urls"))
 ]
