@@ -58,6 +58,8 @@ class Team(models.Model):
         return self.name
 
 
+
+
 class Game(models.Model):
     team1 = models.ForeignKey(
         Team, on_delete=models.CASCADE, related_name='team1')
